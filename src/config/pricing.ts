@@ -3,6 +3,6 @@ export const pricing = {
   studentDiscount: 0.20,
   currency: 'BYN',
   prices: { minsk: 69, grodno: 89, brest: 89, mogilev: 99, gomel: 129, vitebsk: 129 },
-  label: 'Демонстрационные цены',
-  disclaimer: 'Пример расчёта — цены не утверждены',
+  label: 'Demo prices',
+  disclaimer: 'Sample calculation — prices are not yet approved',
 };

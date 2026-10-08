@@ -20,4 +20,4 @@ export async function fetchRoadGeometry(route: TravelRoute, baseUrl: string, dem
  const result:RoadGeometry={type:'Feature',geometry:road.geometry,properties:{routeId:route.id,source:baseUrl,fetchedAt:new Date().toISOString(),distanceMeters:road.distance,durationSeconds:road.duration,demoOnly}};
  if(!validGeometry(result,route.id))throw new Error('Invalid road geometry');return result;
 }
-export const roadLabel = (geometry: RoadGeometry|null|undefined) => geometry ? `${Math.round(geometry.properties.distanceMeters/1000)} км · ≈ ${Math.floor(geometry.properties.durationSeconds/3600)} ч ${Math.round(geometry.properties.durationSeconds%3600/60)} мин за рулём` : 'Схема маршрута · километраж уточняется';
+export const roadLabel = (geometry: RoadGeometry|null|undefined) => geometry ? `${Math.round(geometry.properties.distanceMeters/1000)} km · ≈ ${Math.floor(geometry.properties.durationSeconds/3600)} h ${Math.round(geometry.properties.durationSeconds%3600/60)} min driving` : 'Route outline · distance to be confirmed';

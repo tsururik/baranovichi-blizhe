@@ -30,10 +30,10 @@ test('Each locally cached road has valid metric values and geographic shape',()=
  assert.equal(validGeometry({},'minsk'),false);
 });
 test('Application is local, validates contact/date and student count',async()=>{
- const input={name:'Анна',contact:'anna@example.com',origin:'Минск',date:'2099-01-01',total:2,students:1,discount:true,comment:'Проверка',optionalMuseum:false};
+ const input={name:'Anna',contact:'anna@example.com',origin:'Minsk',date:'2099-01-01',total:2,students:1,discount:true,comment:'Test',optionalMuseum:false};
  assert.equal(validateApplication(input),null);
- assert.match(validateApplication({...input,students:3})!,/студентов/);
- assert.match(validateApplication({...input,date:'2000-01-01'})!,/дату/);
- assert.match(validateApplication({...input,contact:'не контакт'})!,/почту/);
- const result=await applicationAdapter.prepare(input);assert.equal(result.mode,'preview');assert.match(result.text,/не отправлена/);
+ assert.match(validateApplication({...input,students:3})!,/students/);
+ assert.match(validateApplication({...input,date:'2000-01-01'})!,/date/);
+ assert.match(validateApplication({...input,contact:'not a contact'})!,/email/);
+ const result=await applicationAdapter.prepare(input);assert.equal(result.mode,'preview');assert.match(result.text,/not been sent/);
 });

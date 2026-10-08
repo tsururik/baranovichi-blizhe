@@ -2,8 +2,8 @@
   {
     "key": "mir",
     "localFilename": "mir-alt2.jpg",
-    "title": "Комплекс Мирского замка.JPG",
-    "author": "Вадзім Новикаў",
+    "title": "Mir Castle Complex.JPG",
+    "author": "Vadzim Novikau",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG",
@@ -13,7 +13,7 @@
     "width": 1920,
     "height": 1274,
     "src": "images/mir.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "nesvizh",
@@ -29,7 +29,7 @@
     "width": 1280,
     "height": 853,
     "src": "images/nesvizh.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "lida",
@@ -45,7 +45,7 @@
     "width": 1280,
     "height": 853,
     "src": "images/lida.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "navahrudak",
@@ -61,7 +61,7 @@
     "width": 1280,
     "height": 853,
     "src": "images/navahrudak.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "svityaz",
@@ -77,7 +77,7 @@
     "width": 1280,
     "height": 960,
     "src": "images/svityaz.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "pruzhany",
@@ -93,12 +93,12 @@
     "width": 1280,
     "height": 960,
     "src": "images/pruzhany.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "ruzhany",
     "localFilename": "ruzhany.jpg",
-    "title": "Палац Сапегаў, Ружаны.jpg",
+    "title": "Sapieha Palace, Ruzhany.jpg",
     "author": "Pashuk.Dmitry",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -109,7 +109,7 @@
     "width": 1280,
     "height": 724,
     "src": "images/ruzhany.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "kosava",
@@ -125,12 +125,12 @@
     "width": 1280,
     "height": 853,
     "src": "images/kosava.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "babruysk",
     "localFilename": "babruysk.jpg",
-    "title": "01-минские-ворота-297-a.jpg",
+    "title": "Minsk Gate of Babruysk Fortress (01-297-a).jpg",
     "author": "Iskan156",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -141,7 +141,7 @@
     "width": 1280,
     "height": 720,
     "src": "images/babruysk.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "kopyl",
@@ -157,12 +157,12 @@
     "width": 1280,
     "height": 960,
     "src": "images/kopyl.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "krasny",
     "localFilename": "krasny-bereg.jpg",
-    "title": "Усадьба Козелл-Поклевских в Красном Береге, вид с воздуха DJI 1908-HDR (51323141619).jpg",
+    "title": "Kozell-Poklevsky Manor in Krasny Bereg, aerial view DJI 1908-HDR (51323141619).jpg",
     "author": "Andrey Kukharenko from Gomel, Belarus",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
@@ -173,7 +173,7 @@
     "width": 1280,
     "height": 853,
     "src": "images/krasny.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "zhilichi",
@@ -189,12 +189,12 @@
     "width": 1280,
     "height": 960,
     "src": "images/zhilichi.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "orsha",
     "localFilename": "orsha.jpg",
-    "title": "Аршанскі Езуіцкі калегіум ... Orsha Jesuit Collegium - panoramio.jpg",
+    "title": "Orsha Jesuit Collegium - panoramio.jpg",
     "author": "diluted88",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -205,12 +205,12 @@
     "width": 1280,
     "height": 960,
     "src": "images/orsha.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "brilevo",
     "localFilename": "brilevskoye.jpg",
-    "title": "The Field of Brili Брилевское поле (48777420141).jpg",
+    "title": "The Field of Brili (48777420141).jpg",
     "author": "Boris Kukushkin from Minsk, Belarus",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
@@ -221,7 +221,7 @@
     "width": 1280,
     "height": 853,
     "src": "images/brilevo.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "railway",
@@ -237,7 +237,7 @@
     "width": 1280,
     "height": 853,
     "src": "images/railway.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "mir-gallery",
@@ -253,7 +253,7 @@
     "width": 1920,
     "height": 1274,
     "src": "images/mir-gallery.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "mir-alt1-gallery",
@@ -269,7 +269,7 @@
     "width": 1920,
     "height": 1280,
     "src": "images/mir-alt1-gallery.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   },
   {
     "key": "nesvizh-gallery",
@@ -285,6 +285,6 @@
     "width": 1280,
     "height": 852,
     "src": "images/nesvizh-gallery.jpg",
-    "adaptation": "Масштабирование и кадрирование в интерфейсе; лицензия исходной фотографии сохраняется."
+    "adaptation": "Scaled and cropped for the interface; the license of the original photo is retained."
   }
 ]
