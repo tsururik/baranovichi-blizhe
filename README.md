@@ -4,6 +4,8 @@
 
 Интерфейс сайта полностью на английском языке. Тексты лежат в `src/App.tsx`, `src/components/`, `src/data/` и `src/config/`.
 
+Оформление: шрифт Schibsted Grotesk (Google Fonts, подключён в `index.html`), цвета — переменные в начале `src/styles.css`. Все значки — SVG из набора Lucide с одинаковой толщиной линии; маркеры карты рисуются в `src/components/map/TravelMap.tsx`. Текстовые стрелки и символы (↗ → ◷) в интерфейсе не используются.
+
 Готовый локальный демонстрационный сайт на React + TypeScript + Vite + Tailwind CSS + React Leaflet + Lucide React.
 
 ## Запуск
@@ -62,7 +64,7 @@ tests/domain.test.ts           тесты расчётов, программ и 
 
 ### Название и логотип
 
-В `src/config/site.ts` измените `name`, `shortName`, `logoSecondLine`, `tagline`, `contact`. Для собственного логотипа положите файл в `public/images` и задайте `logo: 'images/logo.svg'` (путь без ведущего `/`, иначе на GitHub Pages файл не найдётся). Главный заголовок первого экрана находится в `src/App.tsx`; метаданные вкладки — в `index.html`; маленькая иконка — `public/favicon.svg`. Не добавляйте несуществующие контакты и реквизиты.
+В `src/config/site.ts` измените `name`, `tagline`, `contact`. Знак логотипа (линия маршрута от города к Барановичам) — SVG в `src/components/Logo.tsx`. Для собственного логотипа положите файл в `public/images` и задайте `logo: 'images/logo.svg'` (путь без ведущего `/`, иначе на GitHub Pages файл не найдётся). Главный заголовок первого экрана находится в `src/App.tsx`; метаданные вкладки — в `index.html`; маленькая иконка — `public/favicon.svg`. Не добавляйте несуществующие контакты и реквизиты.
 
 ### Маршруты и описания
 
