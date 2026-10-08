@@ -17,8 +17,9 @@ const pin=(kind:'origin'|'stop'|'extra'|'finish',color:string,size:number,conten
 const finishIcon=pin('finish','#22463a',34,svg(flag,16));
 const allPoints=routes.flatMap(getWaypoints);
 function Controller({route,overview,focused,presentation}:{route:TravelRoute;overview:boolean;focused:string|null;presentation:boolean}){
- const map=useMap();
- useEffect(()=>{const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;map.closePopup();const id=setTimeout(()=>{map.invalidateSize();if(focused){const s=attractions[focused];map.flyTo([s.latitude,s.longitude],12,{animate:!reduced,duration:.7});}else{map.flyToBounds(overview?allPoints:getWaypoints(route),{padding:[45,45],maxZoom:10,animate:!reduced,duration:.8});}},80);return()=>clearTimeout(id);},[map,route,overview,focused,presentation]);
+ const map=useMap(); const first=useRef(true);
+ // The first fit happens without animation: the map should simply open on the route.
+ useEffect(()=>{map.closePopup();const id=setTimeout(()=>{const animate=!first.current&&!matchMedia('(prefers-reduced-motion: reduce)').matches;first.current=false;map.invalidateSize();if(focused){const s=attractions[focused];map.flyTo([s.latitude,s.longitude],12,{animate,duration:.7});}else{map.flyToBounds(overview?allPoints:getWaypoints(route),{padding:[45,45],maxZoom:10,animate,duration:.8});}},80);return()=>clearTimeout(id);},[map,route,overview,focused,presentation]);
  useEffect(()=>{const observer=new ResizeObserver(()=>map.invalidateSize());observer.observe(map.getContainer());return()=>observer.disconnect();},[map]);
  useEffect(()=>{map.attributionControl?.setPrefix('<a href="https://leafletjs.com">Leaflet</a>')},[map]);return null;
 }
