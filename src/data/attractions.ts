@@ -19,4 +19,7 @@ export const attractions: Record<string, Attraction> = {
  brilevo: make('brilevo','Borisov and the Brilevo Field','Borisov and surroundings',54.312222,28.353889,'Memorial sites on the Berezina linked to the 1812 campaign and the crossing of Napoleon’s army. A stop to learn about military history.','45–60 minutes','History',wiki('Брилевское поле')),
  railway: make('railway','Railway Equipment Museum','Baranovichi · 19 Frolenkova St.',53.133158,26.039589,'Historic steam engines, locomotives and other railway equipment in the open air. An optional tour after arrival, by separate arrangement.','45–60 minutes','Museums','https://barturizm.by/istoricheskie-sobytiya/ekonomika-i-byt/130-muzej-istorii-baranovichskogo-otdeleniya-belorusskoj-zheleznoj-dorogi'),
 };
+// Shorter names for compact lists such as the route cards.
+const shortNames: Record<string, string> = { nesvizh: 'Nesvizh Palace', kosava: 'Kosava Palace', zhilichi: 'Zhilichi Palace', orsha: 'Orsha Jesuit Collegium', brilevo: 'Brilevo Field', kopyl: 'Kapyl' };
+export const shortName = (a: Attraction) => shortNames[a.id] ?? a.name;
 export const destination = { name: 'Baranovichi', latitude: 53.11667, longitude: 25.98333, source: wiki('Барановичи') };

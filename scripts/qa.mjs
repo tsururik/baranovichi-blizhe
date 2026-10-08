@@ -1,11 +1,11 @@
 import { chromium } from '@playwright/test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const out='../../work/qa';fs.mkdirSync(out,{recursive:true});
+const base=process.env.QA_URL??'http://127.0.0.1:5173/';const out=process.env.QA_OUT??'../../work/qa';fs.mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({headless:true});
 const context=await browser.newContext({viewport:{width:1920,height:1080},permissions:['clipboard-read','clipboard-write'],reducedMotion:'reduce'});
 const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});
+await page.goto(base,{waitUntil:'networkidle'});
 await page.screenshot({path:`${out}/desktop-home.png`});
 await page.locator('#map').scrollIntoViewIfNeeded();await page.waitForTimeout(1000);await page.screenshot({path:`${out}/desktop-map.png`});
 for(const city of ['Minsk','Grodno','Brest','Mogilev','Gomel','Vitebsk']){
@@ -16,12 +16,30 @@ for(const city of ['Minsk','Grodno','Brest','Mogilev','Gomel','Vitebsk']){
  assert.ok(await page.locator('.popup-photo').evaluate(el=>el.complete&&el.naturalWidth>0));
  await page.getByRole('button',{name:'Back to the route'}).click();
 }
-await page.getByRole('group',{name:'Choose a departure city'}).getByRole('button',{name:'Minsk',exact:true}).click();
-await page.locator('#calculator').getByLabel('Travelers',{exact:true}).fill('4');
-await page.locator('#calculator').getByLabel('Students among them').fill('2');
-await page.locator('#calculator').getByRole('switch').check();
-assert.equal(await page.getByTestId('price-total').innerText(),'248,4 BYN');
-assert.equal(await page.getByTestId('price-savings').innerText(),'27,6 BYN');
+// The hero offer and every card read the same pricing config.
+assert.ok((await page.locator('h1').innerText()).replace(/\u00a0/g,' ').includes('87.20 BYN'));
+assert.deepEqual(await page.locator('.route-card .price-base b').allInnerTexts(),['125','109','119','155','279','249']);
+assert.deepEqual(await page.locator('.route-card .price-student b').allInnerTexts(),['100 BYN','87.20 BYN','95.20 BYN','124 BYN','223.20 BYN','199.20 BYN']);
+// "Calculate the trip" in the map panel hands the selected route to the calculator.
+await page.getByRole('group',{name:'Choose a departure city'}).getByRole('button',{name:'Gomel',exact:true}).click();
+await page.locator('.route-panel').getByRole('link',{name:'Calculate the trip'}).click();
+assert.equal(await page.locator('#calculator select').inputValue(),'gomel');
+// The example from the brief: Minsk, 5 travelers, 3 students: 2 × 125 + 3 × 100 = 550, savings 75.
+await page.locator('#calculator select').selectOption('minsk');
+await page.locator('#calculator').getByLabel('Travelers',{exact:true}).fill('5');
+await page.locator('#calculator').getByLabel('Students among them').fill('3');
+assert.equal(await page.getByTestId('price-regular').innerText(),'250 BYN');
+assert.equal(await page.getByTestId('price-students').innerText(),'300 BYN');
+assert.equal(await page.getByTestId('price-total').innerText(),'550 BYN');
+assert.equal(await page.getByTestId('price-savings').innerText(),'75 BYN');
+await page.locator('#calculator').screenshot({path:`${out}/calculator.png`});
+await page.locator('#calculator select').selectOption('grodno');
+await page.locator('#calculator').getByLabel('Students among them').fill('5');
+assert.equal(await page.getByTestId('price-total').innerText(),'436 BYN');
+await page.locator('#calculator').getByLabel('Students among them').fill('9');
+assert.equal(await page.locator('#calculator').getByLabel('Students among them').inputValue(),'5');
+assert.ok(await page.locator('#calculator .field-hint').isVisible());
+await page.locator('#calculator select').selectOption('minsk');
 await page.locator('#calculator').getByLabel('Travelers',{exact:true}).fill('1');
 assert.equal(await page.locator('#calculator').getByLabel('Students among them').inputValue(),'1');
 await page.locator('#calculator').getByRole('button',{name:'Create a request'}).click();
@@ -36,13 +54,13 @@ await page.getByRole('button',{name:'Presentation mode',exact:true}).click();awa
 assert.equal(await page.locator('.city-tabs button[aria-pressed=true]').innerText(),'Grodno');
 await page.locator('.panel-stops button').first().click();await page.waitForTimeout(950);await page.screenshot({path:`${out}/presentation.png`});
 await page.getByRole('button',{name:'Exit presentation'}).click();
-await page.goto('http://127.0.0.1:5173/?route=minsk#program',{waitUntil:'networkidle'});
+await page.goto(`${base}?route=minsk#program`,{waitUntil:'networkidle'});
 await page.locator('.timeline-image').first().click();await page.getByRole('button',{name:'Next photo'}).click();assert.ok(await page.locator('.gallery-controls').getByText('2 / 3').isVisible());await page.getByRole('button',{name:'Close photos'}).click();
-await page.goto('http://127.0.0.1:5173/?route=brest#map',{waitUntil:'networkidle'});assert.equal(await page.locator('.city-tabs button[aria-pressed=true]').innerText(),'Brest');
+await page.goto(`${base}?route=brest#map`,{waitUntil:'networkidle'});assert.equal(await page.locator('.city-tabs button[aria-pressed=true]').innerText(),'Brest');
 const broken=await page.locator('img').evaluateAll(imgs=>imgs.filter(img=>img.complete&&img.naturalWidth===0).map(img=>img.src));assert.deepEqual(broken,[]);
-await page.setViewportSize({width:390,height:844});await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});await page.screenshot({path:`${out}/mobile-home.png`});
+await page.setViewportSize({width:390,height:844});await page.goto(base,{waitUntil:'networkidle'});await page.screenshot({path:`${out}/mobile-home.png`});
 assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
 await page.getByRole('button',{name:'Menu',exact:true}).click();await page.locator('header nav').getByRole('link',{name:'Travel map'}).click();await page.waitForTimeout(500);assert.equal(await page.getByRole('button',{name:'Menu',exact:true}).getAttribute('aria-expanded'),'false');
 await page.locator('.map-layout').scrollIntoViewIfNeeded();await page.screenshot({path:`${out}/mobile-map.png`});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-assert.deepEqual(errors,[]);console.log('PASS: six routes, markers/photos, calculator, application/copy, presentation/keyboard, gallery, deep link, mobile menu/layout, no runtime errors.');
+assert.deepEqual(errors,[]);console.log('PASS: six routes, markers/photos, prices from one config, calculator (550/75 example, student cap), application/copy, presentation/keyboard, gallery, deep link, mobile menu/layout, no runtime errors.');
 await browser.close();

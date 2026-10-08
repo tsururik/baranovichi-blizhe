@@ -1,23 +1,35 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
-import { calculatePrice } from '../src/lib/pricing';
+import { calculatePrice, studentPrice, money } from '../src/lib/pricing';
 import { routes, getStops } from '../src/data/routes';
 import { attractions } from '../src/data/attractions';
 import { validGeometry } from '../src/lib/routing';
 import { validateApplication, applicationAdapter } from '../src/lib/application';
 import { pricing } from '../src/config/pricing';
-test('Student discount applies only to students, never all participants',()=>{
- assert.deepEqual(calculatePrice(69,4,2,true),{count:4,students:2,base:276,saving:27.6,total:248.4});
- assert.equal(calculatePrice(69,4,2,false).total,276);
- assert.equal(calculatePrice(129,3,0,true).saving,0);
- assert.equal(calculatePrice(129,3,3,true).total,309.6);
+test('Starting prices come from the config and student prices are 20% lower',()=>{
+ assert.deepEqual(pricing.prices,{minsk:125,grodno:109,brest:119,mogilev:155,gomel:279,vitebsk:249});
+ assert.equal(pricing.studentDiscountPercent,20);
+ assert.deepEqual(routes.map(r=>studentPrice(r.demoBasePrice)),[100,87.2,95.2,124,223.2,199.2]);
+ assert.deepEqual(routes.map(r=>money(studentPrice(r.demoBasePrice))),['100','87.20','95.20','124','223.20','199.20']);
+ assert.equal(money(9765),'9,765');
+});
+test('Group price: regular travelers pay the starting price, students pay 20% less',()=>{
+ // The example from the brief: Minsk, 5 travelers, 3 of them students.
+ assert.deepEqual(calculatePrice(125,5,3),{count:5,students:3,regular:2,basePrice:125,studentPrice:100,regularCost:250,studentCost:300,total:550,saving:75});
+ assert.equal(calculatePrice(109,3,3).total,261.6);
+ assert.equal(calculatePrice(119,7,3).total,761.6);
+ assert.equal(calculatePrice(109,10,10).total,872);
+ assert.equal(calculatePrice(279,35,35).total,7812);
+ assert.equal(calculatePrice(249,3,0).saving,0);
+ assert.equal(calculatePrice(155,4,4).saving,124);
 });
 test('Participant bounds and invalid numbers are normalized',()=>{
- assert.equal(calculatePrice(69,2,5,true).students,2);
- assert.equal(calculatePrice(69,0,-1,true).total,69);
- assert.equal(calculatePrice(69,NaN,NaN,true).count,1);
- assert.equal(calculatePrice(69,2.8,1.9,true).students,1);
+ assert.equal(calculatePrice(125,2,5).students,2);
+ assert.equal(calculatePrice(125,0,-1).total,125);
+ assert.equal(calculatePrice(125,NaN,NaN).count,1);
+ assert.equal(calculatePrice(125,2.8,1.9).students,1);
+ assert.equal(calculatePrice(125,80,0).count,pricing.maxTravelers);
 });
 test('All route orders match the brief and each attraction has an image and source',()=>{
  const expected=[['mir','nesvizh'],['lida','navahrudak','svityaz'],['pruzhany','ruzhany','kosava'],['babruysk','kopyl','nesvizh'],['krasny','zhilichi','babruysk','nesvizh'],['orsha','brilevo','mir']];
