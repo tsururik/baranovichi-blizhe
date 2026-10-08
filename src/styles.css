@@ -183,7 +183,6 @@ kbd { display: inline-grid; place-items: center; min-width: 26px; height: 26px; 
 .timeline-item { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 28px; }
 .timeline-image { position: relative; height: 170px; padding: 0; border-radius: 8px; overflow: hidden; background: var(--tint); }
 .timeline-image > img, .timeline-image > .photo-fallback { width: 100%; height: 100%; object-fit: cover; }
-.timeline-image > span { position: absolute; right: 8px; bottom: 8px; display: flex; align-items: center; gap: 4px; padding: 3px 7px; border-radius: 4px; background: rgba(255, 255, 255, .92); font-size: 12px; color: var(--ink); }
 .timeline-text h3 { margin-bottom: 8px; font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
 .timeline-text p:not(.kicker) { font-size: 15px; line-height: 1.65; color: var(--ink-2); }
 .timeline-text .extra-note { margin-top: 8px; font-size: 14px !important; color: var(--muted) !important; }
