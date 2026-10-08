@@ -1,0 +1,1 @@
+export const site = { name: 'Барановичи ближе', shortName: 'барановичи', logoSecondLine: 'ближе', logo: '', tagline: 'Шесть городов. Десятки открытий. Одно путешествие', contact: 'Контакты появятся после запуска', tileUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', tileAttribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' };
